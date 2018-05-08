@@ -362,5 +362,12 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- thrift -->
+        <dependency>
+            <groupId>thrift</groupId>
+            <artifactId>libthrift-fix-leak</artifactId>
+            <version>0.5.0</version>
+        </dependency>
+
     </dependencies>
 </project>
