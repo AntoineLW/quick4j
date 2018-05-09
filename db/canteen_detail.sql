@@ -1,3 +1,4 @@
+use school;
 -- ----------------------------
 -- 创建新表, 食堂表CANTEEN_DETAIL表
 -- ----------------------------
@@ -19,13 +20,13 @@ CREATE TABLE canteen_detail(
   status varchar(60) NOT NULL DEFAULT '' COMMENT '状态 initial, online, offline, invalid',
   canteen_photo_jsons text COMMENT '食堂照片json',
   contract_photo_jsons text COMMENT '合同照片json',
-  belong_school varchar(80) NOT NULL DEFAULT '' COMMENT '隶属的学校id',
+  belong_school_list varchar(80) NOT NULL DEFAULT '' COMMENT '隶属的学校id列表',
   extra_data1 varchar(255) NOT NULL DEFAULT '' COMMENT '额外信息1',
   extra_data2 varchar(255) NOT NULL DEFAULT '' COMMENT '额外信息2',
   create_time bigint(20) unsigned NOT NULL default 0 COMMENT '创建时间，毫秒',
   update_time bigint(20) unsigned NOT NULL default 0 COMMENT '更新时间，毫秒',
   online_time bigint(20) unsigned NOT NULL default 0 COMMENT '上线时间，毫秒',
   offline_time bigint(20) unsigned NOT NULL default 0 COMMENT '下线时间，毫秒',
-  UNIQUE KEY uk_seller_id(seller_id),
+  UNIQUE KEY uk_canteen_id(canteen_id),
   KEY idx_status(status)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='食堂表';

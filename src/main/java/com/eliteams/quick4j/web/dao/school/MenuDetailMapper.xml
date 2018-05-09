@@ -1,0 +1,42 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eliteams.quick4j.web.dao.school.MenuDetailMapper">
+    <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.school.MenuDetail">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="menu_id" property="menuId" jdbcType="VARCHAR" />
+        <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
+        <result column="classification" property="classification" jdbcType="VARCHAR" />
+        <result column="description" property="description" jdbcType="VARCHAR" />
+        <result column="actual_price" property="actualPrice" jdbcType="VARCHAR" />
+        <result column="origin_price" property="originPrice" jdbcType="VARCHAR" />
+        <result column="discount_type" property="discountType" jdbcType="VARCHAR" />
+        <result column="belong_canteen" property="belongCanteen" jdbcType="VARCHAR" />
+        <result column="belong_seller" property="belongSeller" jdbcType="VARCHAR" />
+        <result column="menu_photo_jsons" property="menuPhotoJsons" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="extra_data1" property="extraData1" jdbcType="VARCHAR" />
+        <result column="extra_data2" property="extraData2" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="BIGINT" />
+        <result column="update_time" property="updateTime" jdbcType="BIGINT" />
+        <result column="on_sale_time" property="onSaleTime" jdbcType="BIGINT" />
+        <result column="off_sale_time" property="offSaleTime" jdbcType="BIGINT" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,menu_id,menu_name,classification,description,actual_price,origin_price,discount_type,belong_canteen,belong_seller,menu_photo_jsons,status,extra_data1,extra_data2,create_time,update_time,on_sale_time,off_sale_time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List" />
+        from school.menu_detail
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectByMenuId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from school.menu_detail
+        where menu_id = #{menuId,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

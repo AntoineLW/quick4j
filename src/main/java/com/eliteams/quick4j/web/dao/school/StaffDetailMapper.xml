@@ -1,0 +1,42 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eliteams.quick4j.web.dao.school.StaffDetailMapper">
+    <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.school.StaffDetail">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="staff_id" property="staffId" jdbcType="VARCHAR" />
+        <result column="login_type" property="loginType" jdbcType="VARCHAR" />
+        <result column="login_pass_encrypt" property="loginPassEncrypt" jdbcType="VARCHAR" />
+        <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+        <result column="staff_type" property="staffType" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="cert_status" property="certStatus" jdbcType="VARCHAR" />
+        <result column="avg_score" property="avgScore" jdbcType="NUMERIC" />
+        <result column="tag" property="tag" jdbcType="VARCHAR" />
+        <result column="finish_order_count" property="finishOrderCount" jdbcType="INTEGER" />
+        <result column="assign_order_count" property="assignOrderCount" jdbcType="INTEGER" />
+        <result column="extra_data1" property="extraData1" jdbcType="VARCHAR" />
+        <result column="extra_data2" property="extraData2" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="BIGINT" />
+        <result column="update_time" property="updateTime" jdbcType="BIGINT" />
+        <result column="register_time" property="registerTime" jdbcType="BIGINT" />
+        <result column="last_reception_time" property="lastReceptionTime" jdbcType="BIGINT" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,staff_id,login_type,login_id,login_pass_encrypt,phone_number,staff_type,status,cert_status,avg_score,tag,finish_order_count,assign_order_count,extra_data1,extra_data2,create_time,update_time,register_time,last_reception_time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List" />
+        from school.staff_detail
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectByStaffId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from school.staff_detail
+        where staff_id = #{staffId,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

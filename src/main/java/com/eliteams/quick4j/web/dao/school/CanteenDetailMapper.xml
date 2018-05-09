@@ -1,0 +1,47 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eliteams.quick4j.web.dao.school.CanteenDetailMapper">
+    <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.school.CanteenDetail">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="canteen_id" property="canteenId" jdbcType="VARCHAR" />
+        <result column="canteen_name" property="canteenName" jdbcType="VARCHAR" />
+        <result column="canteen_address" property="canteenAddress" jdbcType="VARCHAR" />
+        <result column="canteen_coordinate" property="canteenCoordinate" jdbcType="VARCHAR" />
+        <result column="canteen_desc" property="canteenDesc" jdbcType="VARCHAR" />
+        <result column="canteen_info" property="canteenInfo" jdbcType="VARCHAR" />
+        <result column="province_code" property="provinceCode" jdbcType="INTEGER" />
+        <result column="province_name" property="provinceName" jdbcType="VARCHAR" />
+        <result column="city_code" property="cityCode" jdbcType="INTEGER" />
+        <result column="city_name" property="cityName" jdbcType="VARCHAR" />
+        <result column="district_code" property="districtCode" jdbcType="INTEGER" />
+        <result column="district_name" property="districtName" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="canteen_photo_jsons" property="canteenPhotoJsons" jdbcType="VARCHAR" />
+        <result column="contract_photo_jsons" property="contractPhotoJsons" jdbcType="VARCHAR" />
+        <result column="belong_school_list" property="belongSchoolList" jdbcType="VARCHAR" />
+        <result column="extra_data1" property="extraData1" jdbcType="VARCHAR" />
+        <result column="extra_data2" property="extraData2" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="BIGINT" />
+        <result column="update_time" property="updateTime" jdbcType="BIGINT" />
+        <result column="online_time" property="onlineTime" jdbcType="BIGINT" />
+        <result column="offline_time" property="offlineTime" jdbcType="BIGINT" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,canteen_id,canteen_name,canteen_address,canteen_coordinate,canteen_desc,canteen_info,province_code,province_name,city_code,city_name,district_code,district_name,status,canteen_photo_jsons,contract_photo_jsons,belong_school_list,extra_data1,extra_data2,create_time,update_time,online_time,offline_time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List" />
+        from school.canteen_detail
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectByCanteenId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from school.canteen_detail
+        where canteen_id = #{canteenId,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

@@ -21,5 +21,5 @@ CREATE TABLE user_detail(
   last_login_time bigint(20) unsigned NOT NULL default 0 COMMENT '上次登录时间，毫秒',
   last_buy_time bigint(20) unsigned NOT NULL default 0 COMMENT '上次购买时间，毫秒',
   UNIQUE KEY uk_user_id(user_id),
-  INDEX idx_phone_number(phone_number),
+  INDEX idx_phone_number(phone_number)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';

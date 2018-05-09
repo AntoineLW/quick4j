@@ -7,7 +7,7 @@ CREATE TABLE menu_detail(
   menu_id varchar(80) NOT NULL DEFAULT '' COMMENT '商品的唯一id',
   menu_name varchar(200) NOT NULL DEFAULT '' COMMENT '商品名称',
   classification varchar(40) NOT NULL DEFAULT '' COMMENT '商品分类',
-  descrption text COMMENT '描述',
+  description text COMMENT '描述',
   actual_price bigint(20) unsigned NOT NULL default 0 COMMENT '实际售卖价格，分',
   origin_price bigint(20) unsigned NOT NULL default 0 COMMENT '原始价格，分',
   discount_type varchar(60) NOT NULL DEFAULT '' COMMENT '打折形式',
@@ -21,5 +21,5 @@ CREATE TABLE menu_detail(
   update_time bigint(20) unsigned NOT NULL default 0 COMMENT '更新时间，毫秒',
   on_sale_time bigint(20) unsigned NOT NULL default 0 COMMENT '上线时间，毫秒',
   off_sale_time bigint(20) unsigned NOT NULL default 0 COMMENT '下线时间，毫秒',
-  UNIQUE KEY uk_menu_detail(menu_detail),
+  UNIQUE KEY uk_menu_id(menu_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品表';

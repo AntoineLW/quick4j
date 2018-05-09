@@ -1,0 +1,41 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eliteams.quick4j.web.dao.school.UserDetailMapper">
+    <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.school.UserDetail">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="user_id" property="userId" jdbcType="VARCHAR" />
+        <result column="login_type" property="loginType" jdbcType="VARCHAR" />
+        <result column="login_id" property="loginId" jdbcType="VARCHAR" />
+        <result column="login_pass_encrypt" property="loginPassEncrypt" jdbcType="VARCHAR" />
+        <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="address_list_encrypt" property="addressListEncrypt" jdbcType="VARCHAR" />
+        <result column="primary_address_encrypt" property="primaryAddressEncrypt" jdbcType="VARCHAR" />
+        <result column="shopping_cart_encrypt" property="shoppingCartEncrypt" jdbcType="VARCHAR" />
+        <result column="extra_data1" property="extraData1" jdbcType="VARCHAR" />
+        <result column="extra_data2" property="extraData2" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="BIGINT" />
+        <result column="update_time" property="updateTime" jdbcType="BIGINT" />
+        <result column="register_time" property="registerTime" jdbcType="BIGINT" />
+        <result column="last_login_time" property="lastLoginTime" jdbcType="BIGINT" />
+        <result column="last_buy_time" property="lastBuyTime" jdbcType="BIGINT" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+          id,user_id,login_type,login_id,login_pass_encrypt,phone_number,status,address_list_encrypt,primary_address_encrypt,shopping_cart_encrypt,extra_data1,extra_data2,create_time,update_time,register_time,last_login_time,last_buy_time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List" />
+        from school.user_detail
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from school.user_detail
+        where user_id = #{userId,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

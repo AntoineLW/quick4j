@@ -1,0 +1,47 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eliteams.quick4j.web.dao.school.SellerDetailMapper">
+    <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.school.SellerDetail">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="seller_id" property="sellerId" jdbcType="VARCHAR" />
+        <result column="seller_name" property="sellerName" jdbcType="VARCHAR" />
+        <result column="seller_address" property="sellerAddress" jdbcType="VARCHAR" />
+        <result column="seller_coordinate" property="sellerCoordinate" jdbcType="VARCHAR" />
+        <result column="seller_desc" property="sellerDesc" jdbcType="VARCHAR" />
+        <result column="seller_info" property="sellerInfo" jdbcType="VARCHAR" />
+        <result column="province_code" property="provinceCode" jdbcType="INTEGER" />
+        <result column="province_name" property="provinceName" jdbcType="VARCHAR" />
+        <result column="city_code" property="cityCode" jdbcType="INTEGER" />
+        <result column="city_name" property="cityName" jdbcType="VARCHAR" />
+        <result column="district_code" property="districtCode" jdbcType="INTEGER" />
+        <result column="district_name" property="districtName" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="seller_photo_jsons" property="sellerPhotoJsons" jdbcType="VARCHAR" />
+        <result column="contract_photo_jsons" property="contractPhotoJsons" jdbcType="VARCHAR" />
+        <result column="belong_school_list" property="belongSchoolList" jdbcType="VARCHAR" />
+        <result column="extra_data1" property="extraData1" jdbcType="VARCHAR" />
+        <result column="extra_data2" property="extraData2" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="BIGINT" />
+        <result column="update_time" property="updateTime" jdbcType="BIGINT" />
+        <result column="online_time" property="onlineTime" jdbcType="BIGINT" />
+        <result column="offline_time" property="offlineTime" jdbcType="BIGINT" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,seller_id,seller_name,seller_address,seller_coordinate,seller_desc,seller_info,province_code,province_name,city_code,city_name,district_code,district_name,status,seller_photo_jsons,contract_photo_jsons,belong_school_list,extra_data1,extra_data2,create_time,update_time,online_time,offline_time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List" />
+        from school.seller_detail
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectBySellerId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from school.seller_detail
+        where seller_id = #{sellerId,jdbcType=VARCHAR}
+    </select>
+
+</mapper>
