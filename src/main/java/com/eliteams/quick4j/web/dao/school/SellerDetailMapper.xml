@@ -17,7 +17,7 @@
         <result column="status" property="status" jdbcType="VARCHAR" />
         <result column="seller_photo_jsons" property="sellerPhotoJsons" jdbcType="VARCHAR" />
         <result column="contract_photo_jsons" property="contractPhotoJsons" jdbcType="VARCHAR" />
-        <result column="belong_school_list" property="belongSchoolList" jdbcType="VARCHAR" />
+        <result column="belong_school" property="belongSchool" jdbcType="VARCHAR" />
         <result column="extra_data1" property="extraData1" jdbcType="VARCHAR" />
         <result column="extra_data2" property="extraData2" jdbcType="VARCHAR" />
         <result column="create_time" property="createTime" jdbcType="BIGINT" />

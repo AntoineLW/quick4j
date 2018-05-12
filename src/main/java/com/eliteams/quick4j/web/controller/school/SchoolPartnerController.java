@@ -1,15 +1,33 @@
 package com.eliteams.quick4j.web.controller.school;
 
 import com.eliteams.quick4j.web.model.response.SchoolResponse;
+import com.eliteams.quick4j.web.model.school.CanteenDetail;
+import com.eliteams.quick4j.web.model.school.SchoolDetail;
+import com.eliteams.quick4j.web.model.school.SellerDetail;
+import com.eliteams.quick4j.web.service.CanteenService;
+import com.eliteams.quick4j.web.service.SchoolService;
+import com.eliteams.quick4j.web.service.SellerService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/school_partner")
 public class SchoolPartnerController {
 
     Logger logger  =  Logger.getLogger(SchoolPartnerController.class);
+
+    @Resource
+    private CanteenService canteenService;
+
+    @Resource
+    private SellerService sellerService;
+
+    @Resource
+    private SchoolService schoolService;
 
     /**
      * 获取推荐商户信息
@@ -22,6 +40,18 @@ public class SchoolPartnerController {
     public SchoolResponse getRecommandPartnerList(@RequestParam(required=true,value="longitude") double longitude,
                                                   @RequestParam(required=true,value="latitude") double latitude) {
         logger.info("getRecommandPartnerList with longitude : " + longitude + ", latitude: " + latitude);
+
+        //1、获取该地址对应的学校
+        SchoolDetail schoolDetail = schoolService.getSchoolByLocation(longitude, latitude);
+        if (schoolDetail == null)
+            return new SchoolResponse(-1, "error", "不存在学校");
+
+        //2、获取该学校推荐的食堂
+        List<CanteenDetail> canteenDetails = canteenService.getRecommandCanteenList(schoolDetail, longitude, latitude);
+
+        //3、获取该学校推荐的商家
+        List<SellerDetail> sellerDetails = sellerService.getRecommandSellerList(schoolDetail, longitude, latitude);
+
         return new SchoolResponse(0, "ok", "");
     }
 
@@ -37,6 +67,18 @@ public class SchoolPartnerController {
     public SchoolResponse getAllPartnerList(@RequestParam(required=true,value="longitude") double longitude,
                                             @RequestParam(required=true,value="latitude") double latitude) {
         logger.info("getAllPartnerList with longitude : " + longitude + ", latitude: " + latitude);
+
+        //1、获取该地址对应的学校
+        SchoolDetail schoolDetail = schoolService.getSchoolByLocation(longitude, latitude);
+        if (schoolDetail == null)
+            return new SchoolResponse(-1, "error", "不存在学校");
+
+        //2、获取该学校推荐的食堂
+        List<CanteenDetail> canteenDetails = canteenService.getAllCanteenList(schoolDetail, longitude, latitude);
+
+        //3、获取该学校推荐的商家
+        List<SellerDetail> sellerDetails = sellerService.getAllSellerList(schoolDetail, longitude, latitude);
+
         return new SchoolResponse(0, "ok", "");
     }
 

@@ -45,7 +45,7 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
   private static final TField STATUS_FIELD_DESC = new TField("status", TType.STRING, (short)14);
   private static final TField SELLER_PHOTO_JSONS_FIELD_DESC = new TField("sellerPhotoJsons", TType.STRING, (short)15);
   private static final TField CONTRACT_PHOTO_JSONS_FIELD_DESC = new TField("contractPhotoJsons", TType.STRING, (short)16);
-  private static final TField BELONG_SCHOOL_LIST_FIELD_DESC = new TField("belongSchoolList", TType.STRING, (short)17);
+  private static final TField BELONG_SCHOOL_FIELD_DESC = new TField("belongSchool", TType.STRING, (short)17);
   private static final TField EXTRA_DATA1_FIELD_DESC = new TField("extraData1", TType.STRING, (short)18);
   private static final TField EXTRA_DATA2_FIELD_DESC = new TField("extraData2", TType.STRING, (short)19);
   private static final TField CREATE_TIME_FIELD_DESC = new TField("createTime", TType.I64, (short)20);
@@ -69,7 +69,7 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
   public String status;
   public String sellerPhotoJsons;
   public String contractPhotoJsons;
-  public String belongSchoolList;
+  public String belongSchool;
   public String extraData1;
   public String extraData2;
   public long createTime;
@@ -95,7 +95,7 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
     STATUS((short)14, "status"),
     SELLER_PHOTO_JSONS((short)15, "sellerPhotoJsons"),
     CONTRACT_PHOTO_JSONS((short)16, "contractPhotoJsons"),
-    BELONG_SCHOOL_LIST((short)17, "belongSchoolList"),
+    BELONG_SCHOOL((short)17, "belongSchool"),
     EXTRA_DATA1((short)18, "extraData1"),
     EXTRA_DATA2((short)19, "extraData2"),
     CREATE_TIME((short)20, "createTime"),
@@ -148,8 +148,8 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
           return SELLER_PHOTO_JSONS;
         case 16: // CONTRACT_PHOTO_JSONS
           return CONTRACT_PHOTO_JSONS;
-        case 17: // BELONG_SCHOOL_LIST
-          return BELONG_SCHOOL_LIST;
+        case 17: // BELONG_SCHOOL
+          return BELONG_SCHOOL;
         case 18: // EXTRA_DATA1
           return EXTRA_DATA1;
         case 19: // EXTRA_DATA2
@@ -247,7 +247,7 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
         new FieldValueMetaData(TType.STRING)));
     tmpMap.put(_Fields.CONTRACT_PHOTO_JSONS, new FieldMetaData("contractPhotoJsons", TFieldRequirementType.DEFAULT, 
         new FieldValueMetaData(TType.STRING)));
-    tmpMap.put(_Fields.BELONG_SCHOOL_LIST, new FieldMetaData("belongSchoolList", TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.BELONG_SCHOOL, new FieldMetaData("belongSchool", TFieldRequirementType.DEFAULT, 
         new FieldValueMetaData(TType.STRING)));
     tmpMap.put(_Fields.EXTRA_DATA1, new FieldMetaData("extraData1", TFieldRequirementType.DEFAULT, 
         new FieldValueMetaData(TType.STRING)));
@@ -285,7 +285,7 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
     String status,
     String sellerPhotoJsons,
     String contractPhotoJsons,
-    String belongSchoolList,
+    String belongSchool,
     String extraData1,
     String extraData2,
     long createTime,
@@ -314,7 +314,7 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
     this.status = status;
     this.sellerPhotoJsons = sellerPhotoJsons;
     this.contractPhotoJsons = contractPhotoJsons;
-    this.belongSchoolList = belongSchoolList;
+    this.belongSchool = belongSchool;
     this.extraData1 = extraData1;
     this.extraData2 = extraData2;
     this.createTime = createTime;
@@ -373,8 +373,8 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
     if (other.isSetContractPhotoJsons()) {
       this.contractPhotoJsons = other.contractPhotoJsons;
     }
-    if (other.isSetBelongSchoolList()) {
-      this.belongSchoolList = other.belongSchoolList;
+    if (other.isSetBelongSchool()) {
+      this.belongSchool = other.belongSchool;
     }
     if (other.isSetExtraData1()) {
       this.extraData1 = other.extraData1;
@@ -414,7 +414,7 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
     this.status = null;
     this.sellerPhotoJsons = null;
     this.contractPhotoJsons = null;
-    this.belongSchoolList = null;
+    this.belongSchool = null;
     this.extraData1 = null;
     this.extraData2 = null;
     setCreateTimeIsSet(false);
@@ -807,27 +807,27 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
     }
   }
 
-  public String getBelongSchoolList() {
-    return this.belongSchoolList;
+  public String getBelongSchool() {
+    return this.belongSchool;
   }
 
-  public SellerDetail setBelongSchoolList(String belongSchoolList) {
-    this.belongSchoolList = belongSchoolList;
+  public SellerDetail setBelongSchool(String belongSchool) {
+    this.belongSchool = belongSchool;
     return this;
   }
 
-  public void unsetBelongSchoolList() {
-    this.belongSchoolList = null;
+  public void unsetBelongSchool() {
+    this.belongSchool = null;
   }
 
-  /** Returns true if field belongSchoolList is set (has been asigned a value) and false otherwise */
-  public boolean isSetBelongSchoolList() {
-    return this.belongSchoolList != null;
+  /** Returns true if field belongSchool is set (has been asigned a value) and false otherwise */
+  public boolean isSetBelongSchool() {
+    return this.belongSchool != null;
   }
 
-  public void setBelongSchoolListIsSet(boolean value) {
+  public void setBelongSchoolIsSet(boolean value) {
     if (!value) {
-      this.belongSchoolList = null;
+      this.belongSchool = null;
     }
   }
 
@@ -1101,11 +1101,11 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
       }
       break;
 
-    case BELONG_SCHOOL_LIST:
+    case BELONG_SCHOOL:
       if (value == null) {
-        unsetBelongSchoolList();
+        unsetBelongSchool();
       } else {
-        setBelongSchoolList((String)value);
+        setBelongSchool((String)value);
       }
       break;
 
@@ -1210,8 +1210,8 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
     case CONTRACT_PHOTO_JSONS:
       return getContractPhotoJsons();
 
-    case BELONG_SCHOOL_LIST:
-      return getBelongSchoolList();
+    case BELONG_SCHOOL:
+      return getBelongSchool();
 
     case EXTRA_DATA1:
       return getExtraData1();
@@ -1274,8 +1274,8 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
       return isSetSellerPhotoJsons();
     case CONTRACT_PHOTO_JSONS:
       return isSetContractPhotoJsons();
-    case BELONG_SCHOOL_LIST:
-      return isSetBelongSchoolList();
+    case BELONG_SCHOOL:
+      return isSetBelongSchool();
     case EXTRA_DATA1:
       return isSetExtraData1();
     case EXTRA_DATA2:
@@ -1449,12 +1449,12 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
         return false;
     }
 
-    boolean this_present_belongSchoolList = true && this.isSetBelongSchoolList();
-    boolean that_present_belongSchoolList = true && that.isSetBelongSchoolList();
-    if (this_present_belongSchoolList || that_present_belongSchoolList) {
-      if (!(this_present_belongSchoolList && that_present_belongSchoolList))
+    boolean this_present_belongSchool = true && this.isSetBelongSchool();
+    boolean that_present_belongSchool = true && that.isSetBelongSchool();
+    if (this_present_belongSchool || that_present_belongSchool) {
+      if (!(this_present_belongSchool && that_present_belongSchool))
         return false;
-      if (!this.belongSchoolList.equals(that.belongSchoolList))
+      if (!this.belongSchool.equals(that.belongSchool))
         return false;
     }
 
@@ -1688,12 +1688,12 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetBelongSchoolList()).compareTo(typedOther.isSetBelongSchoolList());
+    lastComparison = Boolean.valueOf(isSetBelongSchool()).compareTo(typedOther.isSetBelongSchool());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetBelongSchoolList()) {
-      lastComparison = TBaseHelper.compareTo(this.belongSchoolList, typedOther.belongSchoolList);
+    if (isSetBelongSchool()) {
+      lastComparison = TBaseHelper.compareTo(this.belongSchool, typedOther.belongSchool);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -1891,9 +1891,9 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
             TProtocolUtil.skip(iprot, field.type);
           }
           break;
-        case 17: // BELONG_SCHOOL_LIST
+        case 17: // BELONG_SCHOOL
           if (field.type == TType.STRING) {
-            this.belongSchoolList = iprot.readString();
+            this.belongSchool = iprot.readString();
           } else { 
             TProtocolUtil.skip(iprot, field.type);
           }
@@ -2031,9 +2031,9 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
       oprot.writeString(this.contractPhotoJsons);
       oprot.writeFieldEnd();
     }
-    if (this.belongSchoolList != null) {
-      oprot.writeFieldBegin(BELONG_SCHOOL_LIST_FIELD_DESC);
-      oprot.writeString(this.belongSchoolList);
+    if (this.belongSchool != null) {
+      oprot.writeFieldBegin(BELONG_SCHOOL_FIELD_DESC);
+      oprot.writeString(this.belongSchool);
       oprot.writeFieldEnd();
     }
     if (this.extraData1 != null) {
@@ -2179,11 +2179,11 @@ public class SellerDetail implements TBase<SellerDetail, SellerDetail._Fields>, 
     }
     first = false;
     if (!first) sb.append(", ");
-    sb.append("belongSchoolList:");
-    if (this.belongSchoolList == null) {
+    sb.append("belongSchool:");
+    if (this.belongSchool == null) {
       sb.append("null");
     } else {
-      sb.append(this.belongSchoolList);
+      sb.append(this.belongSchool);
     }
     first = false;
     if (!first) sb.append(", ");

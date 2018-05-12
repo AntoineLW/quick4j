@@ -20,7 +20,7 @@ CREATE TABLE seller_detail(
   status varchar(60) NOT NULL DEFAULT '' COMMENT '状态 initial, online, offline, invalid',
   seller_photo_jsons text COMMENT '商家照片json',
   contract_photo_jsons text COMMENT '合同照片json',
-  belong_school_list varchar(80) NOT NULL DEFAULT '' COMMENT '隶属的学校id列表',
+  belong_school varchar(80) NOT NULL DEFAULT '' COMMENT '隶属的学校id',
   extra_data1 varchar(255) NOT NULL DEFAULT '' COMMENT '额外信息1',
   extra_data2 varchar(255) NOT NULL DEFAULT '' COMMENT '额外信息2',
   create_time bigint(20) unsigned NOT NULL default 0 COMMENT '创建时间，毫秒',

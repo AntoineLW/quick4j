@@ -43,7 +43,7 @@ struct CanteenDetail {
     14: string status;
     15: string canteenPhotoJsons;
     16: string contractPhotoJsons;
-    17: string belongSchoolList;
+    17: string belongSchool;
     18: string extraData1;
     19: string extraData2;
     20: i64 createTime;
@@ -69,7 +69,7 @@ struct SellerDetail {
     14: string status;
     15: string sellerPhotoJsons;
     16: string contractPhotoJsons;
-    17: string belongSchoolList;
+    17: string belongSchool;
     18: string extraData1;
     19: string extraData2;
     20: i64 createTime;
