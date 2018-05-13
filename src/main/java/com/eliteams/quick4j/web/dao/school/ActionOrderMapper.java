@@ -5,5 +5,5 @@ import com.eliteams.quick4j.web.model.school.ActionOrder;
 
 public interface ActionOrderMapper extends GenericDao<ActionOrder, Long> {
 
-    ActionOrder selectByOrderId(String orderId);
+    ActionOrder selectByOrderId(long orderId,long userId);
 }

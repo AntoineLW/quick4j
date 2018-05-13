@@ -2,14 +2,14 @@
 <mapper namespace="com.eliteams.quick4j.web.dao.school.ActionOrderMapper">
     <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.school.ActionOrder">
         <id column="id" property="id" jdbcType="BIGINT" />
-        <result column="order_id" property="orderId" jdbcType="VARCHAR" />
-        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="order_id" property="orderId" jdbcType="BIGINT" />
+        <result column="status" property="status" jdbcType="BIGINT" />
         <result column="action_desc" property="actionDesc" jdbcType="VARCHAR" />
-        <result column="action_type" property="actionType" jdbcType="VARCHAR" />
+        <result column="action_type" property="actionType" jdbcType="BIGINT" />
         <result column="total_price" property="totalPrice" jdbcType="BIGINT" />
         <result column="distribution_price" property="distributionPrice" jdbcType="BIGINT" />
-        <result column="user_id" property="userId" jdbcType="VARCHAR" />
-        <result column="distributor_id" property="distributorId" jdbcType="VARCHAR" />
+        <result column="user_id" property="userId" jdbcType="BIGINT" />
+        <result column="distributor_id" property="distributorId" jdbcType="BIGINT" />
         <result column="extra_data1" property="extraData1" jdbcType="VARCHAR" />
         <result column="extra_data2" property="extraData2" jdbcType="VARCHAR" />
         <result column="create_time" property="createTime" jdbcType="BIGINT" />
@@ -30,11 +30,11 @@
         where id = #{id,jdbcType=BIGINT}
     </select>
 
-    <select id="selectByOrderId" resultMap="BaseResultMap" parameterType="java.lang.String">
+    <select id="selectByOrderId" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select
         <include refid="Base_Column_List" />
         from school.action_order
-        where order_id = #{orderId,jdbcType=VARCHAR}
+        where order_id = #{orderId,jdbcType=BIGINT AND user_id = #{userId,jdbcType=BIGINT}
     </select>
 
 </mapper>
