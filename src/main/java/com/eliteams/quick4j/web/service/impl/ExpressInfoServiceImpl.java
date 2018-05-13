@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Created by lf on 2018/5/13.
- * 物流信息管理
+ * 物流信息管理处理
  */
 public class ExpressInfoServiceImpl extends GenericServiceImpl<ExpressInfo, Long>  implements ExpressInfoService {
     @Resource
