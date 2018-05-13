@@ -27,7 +27,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,canteen_id,canteen_name,canteen_address,canteen_coordinate,canteen_desc,canteen_info,province_code,province_name,city_code,city_name,district_code,district_name,status,canteen_photo_jsons,contract_photo_jsons,belong_school_list,extra_data1,extra_data2,create_time,update_time,online_time,offline_time
+        id,canteen_id,canteen_name,canteen_address,canteen_coordinate,canteen_desc,canteen_info,province_code,province_name,city_code,city_name,district_code,district_name,status,canteen_photo_jsons,contract_photo_jsons,belong_school,extra_data1,extra_data2,create_time,update_time,online_time,offline_time
     </sql>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
@@ -42,6 +42,13 @@
         <include refid="Base_Column_List" />
         from school.canteen_detail
         where canteen_id = #{canteenId,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getCanteensBySchool" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from school.canteen_detail
+        where belong_school = #{schoolId,jdbcType=VARCHAR}
     </select>
 
 </mapper>

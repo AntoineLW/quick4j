@@ -6,15 +6,20 @@ import com.eliteams.quick4j.core.util.LocationUtils;
 import com.eliteams.quick4j.web.dao.school.SchoolDetailMapper;
 import com.eliteams.quick4j.web.model.school.SchoolDetail;
 import com.eliteams.quick4j.web.service.SchoolService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
+@Service
 public class SchoolServiceImpl extends GenericServiceImpl<SchoolDetail, Long> implements SchoolService {
+
+    Logger logger  =  Logger.getLogger(SchoolServiceImpl.class);
 
     final double MAXDISTANCE = 5000; //范围在5公里之内被认为是有效距离
 
-    @Autowired
+    @Resource
     SchoolDetailMapper schoolDetailMapper;
 
     @Override
@@ -25,7 +30,11 @@ public class SchoolServiceImpl extends GenericServiceImpl<SchoolDetail, Long> im
     @Override
     public SchoolDetail getSchoolByLocation(double longitude, double latitude) {
 
+        logger.info("getSchoolByLocation with longitude: " + longitude + ", latitude: " + latitude);
+
         List<SchoolDetail> schoolDetails = schoolDetailMapper.getAllSchoolDetails();
+
+        logger.info("getSchoolByLocation with size: " + schoolDetails.size());
 
         SchoolDetail selectedSchool = null;
 
@@ -35,6 +44,7 @@ public class SchoolServiceImpl extends GenericServiceImpl<SchoolDetail, Long> im
         for (SchoolDetail schoolDetail : schoolDetails) {
             double schoolLongtitude = LocationUtils.getLongitude(schoolDetail.getSchoolCoordinate());
             double schoolLatitude = LocationUtils.getLatitude(schoolDetail.getSchoolCoordinate());
+            logger.info("getSchoolByLocation with schoolLongtitude: " + schoolLongtitude + ", schoolLatitude: " + schoolLatitude);
             double distance = LocationUtils.getDistance(schoolLatitude, schoolLongtitude, latitude, longitude);
             if (distance <= minDistance) {
                 minDistance = distance;

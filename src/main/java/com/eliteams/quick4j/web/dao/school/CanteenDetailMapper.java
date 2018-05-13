@@ -12,6 +12,6 @@ public interface CanteenDetailMapper extends GenericDao<CanteenDetail, Long> {
 
     CanteenDetail selectByCanteenId(String canteenId);
 
-    List<CanteenDetail> getCateenBySchool(String schoolId);
+    List<CanteenDetail> getCanteensBySchool(String schoolId);
 }
 

@@ -6,15 +6,17 @@ import com.eliteams.quick4j.web.dao.school.SellerDetailMapper;
 import com.eliteams.quick4j.web.model.school.SchoolDetail;
 import com.eliteams.quick4j.web.model.school.SellerDetail;
 import com.eliteams.quick4j.web.service.SellerService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class SellerServiceImpl extends GenericServiceImpl<SellerDetail, Long> implements SellerService {
 
-    @Autowired
+    @Resource
     SellerDetailMapper sellerDetailMapper;
 
     @Override
@@ -25,7 +27,7 @@ public class SellerServiceImpl extends GenericServiceImpl<SellerDetail, Long> im
     @Override
     public List<SellerDetail> getRecommandSellerList(SchoolDetail schoolDetail, double longitude, double latitude) {
 
-        List<SellerDetail> sellerDetails = sellerDetailMapper.getSellerBySchool(schoolDetail.schoolId);
+        List<SellerDetail> sellerDetails = sellerDetailMapper.getSellersBySchool(schoolDetail.schoolId);
 
         if (sellerDetails.size() <= 2)
             return sellerDetails;
@@ -46,7 +48,7 @@ public class SellerServiceImpl extends GenericServiceImpl<SellerDetail, Long> im
 
     @Override
     public List<SellerDetail> getAllSellerList(SchoolDetail schoolDetail, double longitude, double latitude) {
-        return sellerDetailMapper.getSellerBySchool(schoolDetail.schoolId);
+        return sellerDetailMapper.getSellersBySchool(schoolDetail.schoolId);
     }
 
     @Override

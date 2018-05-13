@@ -1,11 +1,9 @@
 package com.eliteams.quick4j.web.service;
 
+import com.eliteams.quick4j.core.generic.GenericService;
 import com.eliteams.quick4j.web.model.school.SchoolDetail;
 
-/**
- * Created by mi on 18-5-11.
- */
-public interface SchoolService {
+public interface SchoolService extends GenericService<SchoolDetail, Long> {
 
     SchoolDetail getSchoolByLocation(double longitude, double latitude);
 }

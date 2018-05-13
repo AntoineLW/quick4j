@@ -12,5 +12,5 @@ public interface SellerDetailMapper  extends GenericDao<SellerDetail, Long> {
 
     SellerDetail selectBySellerId(String sellerId);
 
-    List<SellerDetail> getSellerBySchool(String schoolId);
+    List<SellerDetail> getSellersBySchool(String schoolId);
 }

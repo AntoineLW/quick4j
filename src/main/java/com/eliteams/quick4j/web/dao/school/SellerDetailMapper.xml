@@ -27,7 +27,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,seller_id,seller_name,seller_address,seller_coordinate,seller_desc,seller_info,province_code,province_name,city_code,city_name,district_code,district_name,status,seller_photo_jsons,contract_photo_jsons,belong_school_list,extra_data1,extra_data2,create_time,update_time,online_time,offline_time
+        id,seller_id,seller_name,seller_address,seller_coordinate,seller_desc,seller_info,province_code,province_name,city_code,city_name,district_code,district_name,status,seller_photo_jsons,contract_photo_jsons,belong_school,extra_data1,extra_data2,create_time,update_time,online_time,offline_time
     </sql>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
@@ -42,6 +42,13 @@
         <include refid="Base_Column_List" />
         from school.seller_detail
         where seller_id = #{sellerId,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getSellersBySchool" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from school.seller_detail
+        where belong_school = #{schoolId,jdbcType=VARCHAR}
     </select>
 
 </mapper>

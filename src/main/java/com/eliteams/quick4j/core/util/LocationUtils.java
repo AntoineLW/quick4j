@@ -1,9 +1,11 @@
 package com.eliteams.quick4j.core.util;
 
-import net.sf.json.JSON;
 import net.sf.json.JSONObject;
+import org.apache.log4j.Logger;
 
 public class LocationUtils {
+
+    static Logger logger  =  Logger.getLogger(LocationUtils.class);
 
     private static double EARTH_RADIUS = 6378.137;
 
@@ -19,8 +21,7 @@ public class LocationUtils {
      * @param lng2
      * @return
      */
-    public static double getDistance(double lat1, double lng1, double lat2,
-                                     double lng2) {
+    public static double getDistance(double lat1, double lng1, double lat2, double lng2) {
         double radLat1 = rad(lat1);
         double radLat2 = rad(lat2);
         double a = radLat1 - radLat2;
@@ -43,6 +44,9 @@ public class LocationUtils {
     }
 
     private static double getLocation(String loationJson, String field) {
+
+        logger.info("getLocation with loationJson: " + loationJson + ", field: " + field);
+
         try {
             JSONObject jsonObject = JSONObject.fromObject(loationJson);
             if (jsonObject.containsKey(field))
@@ -51,5 +55,9 @@ public class LocationUtils {
         } catch (Exception ex) {
             return 0;
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getLatitude("{\"longitude\":113.886316,\"latitude\":27.634686}"));
     }
 }

@@ -1,5 +1,6 @@
 package com.eliteams.quick4j.web.controller.school;
 
+import com.eliteams.quick4j.core.util.JsonResponseUtils;
 import com.eliteams.quick4j.web.model.response.SchoolResponse;
 import com.eliteams.quick4j.web.model.school.CanteenDetail;
 import com.eliteams.quick4j.web.model.school.SchoolDetail;
@@ -52,7 +53,7 @@ public class SchoolPartnerController {
         //3、获取该学校推荐的商家
         List<SellerDetail> sellerDetails = sellerService.getRecommandSellerList(schoolDetail, longitude, latitude);
 
-        return new SchoolResponse(0, "ok", "");
+        return new SchoolResponse(0, "ok", JsonResponseUtils.partnerResponseJson(canteenDetails, sellerDetails, longitude, latitude));
     }
 
 
@@ -79,7 +80,11 @@ public class SchoolPartnerController {
         //3、获取该学校推荐的商家
         List<SellerDetail> sellerDetails = sellerService.getAllSellerList(schoolDetail, longitude, latitude);
 
-        return new SchoolResponse(0, "ok", "");
+        logger.info("getAllPartnerList with canteen size: " + canteenDetails.size() + ", seller size: " + sellerDetails.size());
+        String result = JsonResponseUtils.partnerResponseJson(canteenDetails, sellerDetails, longitude, latitude);
+        logger.info("getAllPartnerList with result: " + result);
+
+        return new SchoolResponse(0, "ok", result);
     }
 
 
