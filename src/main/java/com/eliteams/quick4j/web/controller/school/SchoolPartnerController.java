@@ -53,7 +53,11 @@ public class SchoolPartnerController {
         //3、获取该学校推荐的商家
         List<SellerDetail> sellerDetails = sellerService.getRecommandSellerList(schoolDetail, longitude, latitude);
 
-        return new SchoolResponse(0, "ok", JsonResponseUtils.partnerResponseJson(canteenDetails, sellerDetails, longitude, latitude));
+        logger.info("getRecommandPartnerList with canteen size: " + canteenDetails.size() + ", seller size: " + sellerDetails.size());
+        String result = JsonResponseUtils.partnerResponseJson(canteenDetails, sellerDetails, longitude, latitude);
+        logger.info("getRecommandPartnerList with result: " + result);
+
+        return new SchoolResponse(0, "ok", result);
     }
 
 

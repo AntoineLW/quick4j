@@ -30,55 +30,68 @@ public class JsonResponseUtils {
         colArray.add("notice"); //通知
         resultJson.put("cols", colArray);
 
-        resultJson.put("number", canteenDetails.size() + sellerDetails.size());
+        int number = 0;
+        if (canteenDetails != null)
+            number += canteenDetails.size();
+        if (sellerDetails != null)
+            number += sellerDetails.size();
+        resultJson.put("number", number);
 
         JSONArray dataArray = new JSONArray();
-        for (CanteenDetail canteenDetail : canteenDetails) {
-            double partnerLongitude = LocationUtils.getLongitude(canteenDetail.canteenCoordinate);
-            double partnerLatitude = LocationUtils.getLatitude(canteenDetail.canteenCoordinate);
-            double distance = LocationUtils.getDistance(latitude, longitude, partnerLatitude, partnerLongitude);
+        if (canteenDetails != null) {
+            for (CanteenDetail canteenDetail : canteenDetails) {
+                double partnerLongitude = LocationUtils.getLongitude(canteenDetail.canteenCoordinate);
+                double partnerLatitude = LocationUtils.getLatitude(canteenDetail.canteenCoordinate);
+                double distance = LocationUtils.getDistance(latitude, longitude, partnerLatitude, partnerLongitude);
 
-            JSONArray partnerArray = new JSONArray();
-            partnerArray.add(canteenDetail.canteenId); //食堂ID
-            partnerArray.add(""); //照片路径
-            partnerArray.add(canteenDetail.canteenName); //商户名称
-            partnerArray.add(0); //月销量
-            partnerArray.add(distance); //距离
-            partnerArray.add(0); //价格(分)
-            partnerArray.add(""); //优惠信息
-            partnerArray.add(partnerLongitude); //经度
-            partnerArray.add(partnerLatitude); //纬度
-            partnerArray.add(1); //商户类型(1食堂,2商户)
-            partnerArray.add(0); //起送价格(分)
-            partnerArray.add(0); //配送价格(分)
-            partnerArray.add(""); //通知
+                JSONArray partnerArray = new JSONArray();
+                partnerArray.add(canteenDetail.canteenId); //食堂ID
+                partnerArray.add(""); //照片路径
+                partnerArray.add(canteenDetail.canteenName); //商户名称
+                partnerArray.add(0); //月销量
+                partnerArray.add(distance); //距离
+                partnerArray.add(0); //价格(分)
+                partnerArray.add(""); //优惠信息
+                partnerArray.add(partnerLongitude); //经度
+                partnerArray.add(partnerLatitude); //纬度
+                partnerArray.add(1); //商户类型(1食堂,2商户)
+                partnerArray.add(0); //起送价格(分)
+                partnerArray.add(0); //配送价格(分)
+                partnerArray.add(""); //通知
 
-            dataArray.add(partnerArray);
+                dataArray.add(partnerArray);
+            }
         }
-        for (SellerDetail sellerDetail : sellerDetails) {
-            double partnerLongitude = LocationUtils.getLongitude(sellerDetail.sellerCoordinate);
-            double partnerLatitude = LocationUtils.getLatitude(sellerDetail.sellerCoordinate);
-            double distance = LocationUtils.getDistance(latitude, longitude, partnerLatitude, partnerLongitude);
+        if (sellerDetails != null) {
+            for (SellerDetail sellerDetail : sellerDetails) {
+                double partnerLongitude = LocationUtils.getLongitude(sellerDetail.sellerCoordinate);
+                double partnerLatitude = LocationUtils.getLatitude(sellerDetail.sellerCoordinate);
+                double distance = LocationUtils.getDistance(latitude, longitude, partnerLatitude, partnerLongitude);
 
-            JSONArray partnerArray = new JSONArray();
-            partnerArray.add(sellerDetail.sellerId); //食堂ID
-            partnerArray.add(""); //照片路径
-            partnerArray.add(sellerDetail.sellerName); //商户名称
-            partnerArray.add(0); //月销量
-            partnerArray.add(distance); //距离
-            partnerArray.add(0); //价格(分)
-            partnerArray.add(""); //优惠信息
-            partnerArray.add(partnerLongitude); //经度
-            partnerArray.add(partnerLatitude); //纬度
-            partnerArray.add(1); //商户类型(1食堂,2商户)
-            partnerArray.add(0); //起送价格(分)
-            partnerArray.add(0); //配送价格(分)
-            partnerArray.add(""); //通知
+                JSONArray partnerArray = new JSONArray();
+                partnerArray.add(sellerDetail.sellerId); //食堂ID
+                partnerArray.add(""); //照片路径
+                partnerArray.add(sellerDetail.sellerName); //商户名称
+                partnerArray.add(0); //月销量
+                partnerArray.add(distance); //距离
+                partnerArray.add(0); //价格(分)
+                partnerArray.add(""); //优惠信息
+                partnerArray.add(partnerLongitude); //经度
+                partnerArray.add(partnerLatitude); //纬度
+                partnerArray.add(1); //商户类型(1食堂,2商户)
+                partnerArray.add(0); //起送价格(分)
+                partnerArray.add(0); //配送价格(分)
+                partnerArray.add(""); //通知
 
-            dataArray.add(partnerArray);
+                dataArray.add(partnerArray);
+            }
         }
 
         resultJson.put("partners", dataArray);
         return resultJson.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(partnerResponseJson(null, null, 1,1));
     }
 }
