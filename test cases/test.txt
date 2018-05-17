@@ -3,3 +3,6 @@ insert school_detail (school_id, school_name, school_abbreviate, school_address,
 
 //食堂
 insert cateen_detail (canteen_id, canteen_name, canteen_address, canteen_coordinate, canteen_desc, canteen_info, province_code, province_name, city_code, city_name, district_code, district_name, status, canteen_photo_jsons, contract_photo_jsons, belong_school, extra_data1, extra_data2, create_time, update_time, online_time, offline_time) value ('CAT_JX_PX_PXXY_DYST', '萍乡学院第一食堂', '江西省萍乡市萍安北大道211号', '{"longitude":113.886316,"latitude":27.634686}', '萍乡学院第一食堂', '', 360000,'江西省',360300,'萍乡市',360302,'安源区', 'initial', '', '', 'SCH_JX_PX_PXXY', '', '', 0, 0, 0, 0)
+
+//卖家
+insert seller_detail (seller_id, seller_name, seller_address, seller_coordinate, seller_desc, seller_info, province_code, province_name, city_code, city_name, district_code, district_name, status, seller_photo_jsons, contract_photo_jsons, belong_school, extra_data1, extra_data2, create_time, update_time, online_time, offline_time) value ('SEL_JX_PX_HMJMF', '黄焖鸡米饭',

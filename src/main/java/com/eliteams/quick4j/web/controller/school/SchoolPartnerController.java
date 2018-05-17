@@ -1,6 +1,7 @@
 package com.eliteams.quick4j.web.controller.school;
 
 import com.eliteams.quick4j.core.util.JsonResponseUtils;
+import com.eliteams.quick4j.core.util.SchoolUtils;
 import com.eliteams.quick4j.web.model.response.SchoolResponse;
 import com.eliteams.quick4j.web.model.school.CanteenDetail;
 import com.eliteams.quick4j.web.model.school.SchoolDetail;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.awt.*;
 import java.util.List;
 
 @Controller
@@ -101,6 +103,19 @@ public class SchoolPartnerController {
     @ResponseBody
     public SchoolResponse getMenuList(@RequestParam(required=true,value="partner_id") String partnerId) {
         logger.info("getMenuList with partnerId : " + partnerId);
-        return new SchoolResponse(0, "ok", "");
+
+        SchoolUtils.SellerType sellerType = SchoolUtils.getSellerType(partnerId);
+
+        String result = "";
+        if (sellerType == SchoolUtils.SellerType.CANTEEN) {
+            List<Menu> menus = canteenService.getMenuList(partnerId);
+        }
+        else if (sellerType == SchoolUtils.SellerType.SELLER) {
+            List<Menu> menus = sellerService.getMenuList(partnerId);
+        }
+        else
+            return new SchoolResponse(-1, "error partner id", result);
+
+        return new SchoolResponse(0, "ok", result);
     }
 }
